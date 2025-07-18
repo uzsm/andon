@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Andon tizimi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>“UZ SAEMYUNG CO” korxonasining press dastgohlari uchun “Andon” sistemasi</h1>
+      <div class="realtime">Real vaqt</div>
+    </header>
+
+    <div class="press-row">
+      <!-- PRESS 1 -->
+      <div class="press-col">
+        <div class="press-title">PRESS_1</div>
+        <div class="press-buttons">
+          <button>600 T-300T</button>
+          <button>C press</button>
+        </div>
+        <table>
+          <thead>
+            <tr><th>#</th><th>Muammo ochildi</th><th>Bartaraf qilindi</th></tr>
+          </thead>
+          <tbody>
+<tr><td>1</td><td class="p1o0"></td><td class="p1y0"></td></tr>
+<tr><td>2</td><td class="p1o1"></td><td class="p1y1"></td></tr>
+<tr><td>3</td><td class="p1o2"></td><td class="p1y2"></td></tr>
+<tr><td>4</td><td class="p1o3"></td><td class="p1y3"></td></tr>
+<tr><td>5</td><td class="p1o4"></td><td class="p1y4"></td></tr>
+<tr><td>6</td><td class="p1o5"></td><td class="p1y5"></td></tr>
+<tr><td>7</td><td class="p1o6"></td><td class="p1y6"></td></tr>
+<tr><td>8</td><td class="p1o7"></td><td class="p1y7"></td></tr>
+<tr><td>9</td><td class="p1o8"></td><td class="p1y8"></td></tr>
+<tr><td>10</td><td class="p1o9"></td><td class="p1y9"></td></tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PRESS 2 -->
+      <div class="press-col">
+        <div class="press-title">PRESS_2</div>
+        <div class="press-buttons">
+          <button>600 T-300T</button>
+        </div>
+        <table>
+          <thead>
+            <tr><th>#</th><th>Muammo ochildi</th><th>Bartaraf qilindi</th></tr>
+          </thead>
+          <tbody>
+<tr><td>1</td><td class="p2o0"></td><td class="p2y0"></td></tr>
+<tr><td>2</td><td class="p2o1"></td><td class="p2y1"></td></tr>
+<tr><td>3</td><td class="p2o2"></td><td class="p2y2"></td></tr>
+<tr><td>4</td><td class="p2o3"></td><td class="p2y3"></td></tr>
+<tr><td>5</td><td class="p2o4"></td><td class="p2y4"></td></tr>
+<tr><td>6</td><td class="p2o5"></td><td class="p2y5"></td></tr>
+<tr><td>7</td><td class="p2o6"></td><td class="p2y6"></td></tr>
+<tr><td>8</td><td class="p2o7"></td><td class="p2y7"></td></tr>
+<tr><td>9</td><td class="p2o8"></td><td class="p2y8"></td></tr>
+<tr><td>10</td><td class="p2o9"></td><td class="p2y9"></td></tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PRESS 3 -->
+      <div class="press-col">
+        <div class="press-title">PRESS_3</div>
+        <div class="press-buttons">
+          <button>Robot liniya</button>
+          <button>Manual liniya</button>
+        </div>
+        <table>
+          <thead>
+            <tr><th>#</th><th>Muammo ochildi</th><th>Bartaraf qilindi</th></tr>
+          </thead>
+          <tbody>
+<tr><td>1</td><td class="p3o0"></td><td class="p3y0"></td></tr>
+<tr><td>2</td><td class="p3o1"></td><td class="p3y1"></td></tr>
+<tr><td>3</td><td class="p3o2"></td><td class="p3y2"></td></tr>
+<tr><td>4</td><td class="p3o3"></td><td class="p3y3"></td></tr>
+<tr><td>5</td><td class="p3o4"></td><td class="p3y4"></td></tr>
+<tr><td>6</td><td class="p3o5"></td><td class="p3y5"></td></tr>
+<tr><td>7</td><td class="p3o6"></td><td class="p3y6"></td></tr>
+<tr><td>8</td><td class="p3o7"></td><td class="p3y7"></td></tr>
+<tr><td>9</td><td class="p3o8"></td><td class="p3y8"></td></tr>
+<tr><td>10</td><td class="p3o9"></td><td class="p3y9"></td></tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_URL = "https://script.google.com/macros/s/AKfycbxBcVUKIbaTU7ioAYE3KisDRqFFUCpto_bkGsj-VVG_xDRLZ4C-tK-q46VoxKeO9GmM/exec";
+
+    function updateTable(data) {
+      for (let i = 0; i < 10; i++) {
+        document.querySelector(".p1o" + i).textContent = data.press1.ochildi[i] || "";
+        document.querySelector(".p1y" + i).textContent = data.press1.yopildi[i] || "";
+
+        document.querySelector(".p2o" + i).textContent = data.press2.ochildi[i] || "";
+        document.querySelector(".p2y" + i).textContent = data.press2.yopildi[i] || "";
+
+        document.querySelector(".p3o" + i).textContent = data.press3.ochildi[i] || "";
+        document.querySelector(".p3y" + i).textContent = data.press3.yopildi[i] || "";
+      }
+    }
+
+    function updateTime() {
+      const now = new Date();
+      document.querySelector(".realtime").textContent =
+        now.toLocaleDateString() + " " + now.toLocaleTimeString();
+    }
+
+    function fetchData() {
+      fetch(API_URL)
+        .then((res) => res.json())
+        .then((data) => updateTable(data))
+        .catch((err) => console.error("Xatolik:", err));
+    }
+
+    setInterval(() => {
+      updateTime();
+      fetchData();
+    }, 5000);
+
+    updateTime();
+    fetchData();
+  </script>
+</body>
+</html>
